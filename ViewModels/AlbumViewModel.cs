@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MusicStore.ViewModels
 {
-    internal class AlbumViewModel
+    public class AlbumViewModel
     {
     }
 }
