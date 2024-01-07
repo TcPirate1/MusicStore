@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.IO;
 
 namespace MusicStore.Models
 {
@@ -30,6 +32,22 @@ namespace MusicStore.Models
             return query.Albums.Select(x =>
                 new Album(x.ArtistName, x.CollectionName, 
                     x.ArtworkUrl100.Replace("100x100bb", "600x600bb")));
+        }
+
+        private static HttpClient s_httpClient = new();
+        private string CachePath => $"./Cache/{Artist} - {Title}";
+
+        public async Task<Stream> LoadCoverBitmapAsync()
+        {
+            if (File.Exists(CachePath + ".bmp"))
+            {
+                return File.OpenRead(CachePath + ".bmp");
+            }
+            else
+            {
+                var data = await s_httpClient.GetByteArrayAsync(CoverUrl);
+                return new MemoryStream(data);
+            }
         }
     }
 }
