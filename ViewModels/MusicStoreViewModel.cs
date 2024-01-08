@@ -48,6 +48,10 @@ namespace MusicStore.ViewModels
             IsBusy = true;
             SearchResults.Clear();
 
+            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource = new CancellationTokenSource();
+            var cancellationToken = _cancellationTokenSource.Token;
+
             if (!string.IsNullOrWhiteSpace(s))
             {
                 var albums = await Album.SearchAsync(s);
@@ -56,6 +60,10 @@ namespace MusicStore.ViewModels
                 {
                     var vm = new AlbumViewModel(album);
                     SearchResults.Add(vm);
+                }
+                if (!cancellationToken.IsCancellationRequested)
+                {
+                    LoadCovers(cancellationToken);
                 }
             }
             IsBusy = false;
@@ -73,5 +81,7 @@ namespace MusicStore.ViewModels
                 }
             }
         }
+
+        private CancellationTokenSource? _cancellationTokenSource;
     }
 }
