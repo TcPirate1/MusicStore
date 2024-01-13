@@ -1,5 +1,7 @@
 # MusicStore
-Following the music store app on Avalonia
+Following the music store app on Avalonia.
+
+Have gotten VS code extension to preview properly. It was because I did not have the .NET 7.0 SDK installed.
 
 ## Notes
 https://docs.avaloniaui.net/docs/tutorials/music-store-app/add-content-to-dialog (Diagram of layout of the music store)
