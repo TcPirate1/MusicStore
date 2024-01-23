@@ -15,3 +15,5 @@ https://docs.avaloniaui.net/docs/0.10.x/data-binding/change-notifications#collec
 https://docs.avaloniaui.net/docs/tutorials/music-store-app/mock-search (Uses `ObservableCollection`, a way to detect changes)
 
 https://github.com/AvaloniaUI/Avalonia/discussions/13035, https://www.reddit.com/r/csharp/comments/ijlkx4/every_initializecomponent_reference_in_my_project/ (Fixed by simply building the project.)
+
+https://github.com/AvaloniaUI/MusicStoreTutorial/tree/master/Avalonia.MusicStore (There are differences between the tutorial and the repo code. Repo code works while simply following tutorial does not.)
